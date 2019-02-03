@@ -92,7 +92,10 @@ except lightpack.CannotConnectError as e:
 # Read the current states
 print("Status:           %s" % lp.getStatus())
 print("API status:       %s" % lp.getApiStatus())
+<<<<<<< HEAD
 print("API version:      %s" % lp.getApiVersion())
+=======
+>>>>>>> Implement all API v1.4 commands
 print("Locked:           %s" % lp.getLockStatus())
 
 print("Devices possible: %s" % ', '.join(lp.getDevices()))

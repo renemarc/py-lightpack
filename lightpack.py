@@ -677,6 +677,7 @@ class Lightpack:
 	def setCountLeds(self, count):
 		"""
 		Set the number of LEDs.
+
 		:param count: Number of LEDs
 		:type count: int
 		"""
