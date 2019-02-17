@@ -457,7 +457,7 @@ class Lightpack:
 		"""
 		Get the API lock status (locked or unlocked).
 
-		:returns: string, 'ok' or 'no' depending on lock state.
+		:returns: string, 'ok', 'no' or 'busy' depending on lock state.
 		"""
 		return self._sendAndReceivePayload('getlockstatus')
 
