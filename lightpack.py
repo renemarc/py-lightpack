@@ -978,6 +978,8 @@ class CommandDeprecatedError(RuntimeError):
 		self.method = method
 		self.maximum = maximum
 		self.version = version
+
+
 class CommandNotSupportedError(RuntimeError):
 	def __init__(self, method, minimum, version):
 		message = "%s is not supported in API version '%s'. The minimum " \

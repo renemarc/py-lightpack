@@ -111,10 +111,10 @@ if lp.getApiVersion() >= '1.5':
 	print("Brightness:       %d" % lp.getBrightness())
 	print("Smoothness:       %s" % lp.getSmoothness())
 	print("Gamma:            %s" % lp.getGamma())
-if (lp.getApiVersion() >= '2.1'):
+if lp.getApiVersion() >= '2.1':
 	print("SoundViz liquid:  %s" % lp.getSoundVizLiquid())
 	print("SoundViz colours: %s" % (lp.getSoundVizColours(),))
-if (lp.getApiVersion() >= '2.2'):
+if lp.getApiVersion() >= '2.2':
 	print("Persistence:      %s" % lp.getPersistence())
 
 # Lock the Lightpack so we can make changes
