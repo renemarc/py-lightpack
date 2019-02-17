@@ -216,18 +216,9 @@ class Lightpack:
 		:returns: Tuple with LED and tuple of red, green, blue values (0 to 
 		255)
 		"""
-		try:
-			parts = snippet.split('-', 1)
-			colours = parts[1].split(',', 2)
-			rgb = [int(x) for x in colours if x.strip()]
-			led = parts[0].strip()
-			if not led or len(rgb) != 3:
-				return None
-			return int(led), tuple(rgb)
-		except IndexError:
-			return None
-		except ValueError:
-			return None
+		led, colours = snippet.split('-', 1)
+		rgb = [int(x) for x in colours.split(',', 2)]
+		return int(led), tuple(rgb)
 
 	def getColoursFromAll(self):
 		"""
@@ -241,8 +232,7 @@ class Lightpack:
 		colours = {}
 		for command in commands:
 			data = self._ledColourRead(command)
-			if data is not None:
-				colours[data[0]] = data[1]
+			colours[data[0]] = data[1]
 		return colours
 	getColorsFromAll = getColoursFromAll
 
@@ -371,7 +361,7 @@ class Lightpack:
 			self._maxLeds = int(self._sendAndReceivePayload('getmaxleds'))
 		return self._maxLeds
 
-	def _ledDimensionRead(self, command):
+	def _ledSizeRead(self, command):
 		"""
 		Read a LED size state snippet into rectangle Tuple.
 
@@ -379,18 +369,9 @@ class Lightpack:
 		:type command: str
 		:returns: Tuple with LED and tuple of x0, y0, x1, y1.
 		"""
-		try:
-			parts = command.split('-', 1)
-			coordinates = parts[1].split(',', 3)
-			rectangle = [int(x) for x in coordinates if x.strip()]
-			led = parts[0].strip()
-			if not led or len(rectangle) != 4:
-				return None
-			return int(led), tuple(rectangle)
-		except IndexError:
-			return None
-		except ValueError:
-			return None
+		led, coordinates = command.split('-', 1)
+		rectangle = [int(x) for x in coordinates.split(',', 3)]
+		return int(led), tuple(rectangle)
 
 	def getLedSizes(self, fresh=True):
 		"""
@@ -409,9 +390,8 @@ class Lightpack:
 				.split(';')
 			self._ledSizes = {}
 			for command in commands:
-				data = self._ledDimensionRead(command)
-				if data is not None:
-					self._ledSizes[data[0]] = data[1]
+				data = self._ledSizeRead(command)
+				self._ledSizes[data[0]] = data[1]
 		return self._ledSizes
 
 	def getCountMonitors(self, fresh=True):
