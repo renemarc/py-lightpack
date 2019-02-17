@@ -804,6 +804,7 @@ class CommandFailedError(RuntimeError):
 		self.command = command
 		self.response = response
 		self.expected = expected
+
 class CommandNotSupportedError(RuntimeError):
 	def __init__(self, method, minimum, version):
 		message = "%s is not supported in API version '%s'. The minimum " \

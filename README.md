@@ -107,7 +107,7 @@ print("LED 0 size:       %s" % (lp.getLedSizes()[0],))
 print("FPS:              %d" % lp.getFps())
 print("Mode:             %s" % lp.getMode())
 print("Profile:          %s" % lp.getProfile())
-if (lp.getApiVersion() >= '1.5'):
+if lp.getApiVersion() >= '1.5':
 	print("Brightness:       %d" % lp.getBrightness())
 	print("Smoothness:       %s" % lp.getSmoothness())
 	print("Gamma:            %s" % lp.getGamma())
